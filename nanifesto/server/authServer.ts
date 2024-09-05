@@ -1,8 +1,7 @@
 import env from 'env-var';
 import express from 'express';
-import path from 'path';
 import cors from 'cors';
-import postgres = require('./../database/db.tsx');
+import postgres = require('../database/db.tsx');
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 

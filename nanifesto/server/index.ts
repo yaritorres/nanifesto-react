@@ -1,9 +1,7 @@
 require('dotenv').config();
 import express from 'express';
-import path from 'path';
 import cors from 'cors';
-import postgres = require('./../database/db.tsx');
-import bcrypt from 'bcrypt';
+import postgres = require('../database/db.tsx');
 import jwt from 'jsonwebtoken';
 
 const app = express();
