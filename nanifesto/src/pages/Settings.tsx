@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Credits from '../../components/credits';
+import Credits from '../components/Credits.tsx';
 
 export default function Settings() {
   const [dark, setDark] = useState('');

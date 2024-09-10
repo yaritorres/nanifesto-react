@@ -1,9 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
-const axios = require('axios').default;
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Home() {
-  const [adminStatus, setAdminStatus] = useState();
+export default function Home({ findUser, setLoggedAs, adminStatus, setAdminStatus }) {
+  const navigate = useNavigate();
   // SETS CURRENT THEME (LIGHT OR DARK) ON PAGE USING LOCAL STORAGE,
   // OTHERWISE DEFAULTS TO DARKMODE IF NONE IS SET
   useEffect(() => {
@@ -16,30 +16,6 @@ export default function Home() {
       document.documentElement.classList.add(savedMode || 'dark');
     }
   }, []);
-
-  useEffect(() => {
-    const options = {
-      url: 'http://localhost:3000/find-user',
-      headers: {
-        "Authorization": `Bearer ${window.localStorage.accessToken}`
-      }
-    };
-
-    async function findUser () {
-      try {
-        let result;
-
-        result = await axios.get(options.url, {headers: options.headers});
-
-        setAdminStatus(result.data.admin);
-      }
-      catch (err) {
-        console.log(err);
-      }
-    };
-
-    findUser()
-  }, [])
 
   return (
     <div
@@ -57,18 +33,18 @@ export default function Home() {
             `bg-green-900 text-lime-500 font-mono text-2xl lg:text-3xl text-center rounded p-4 hover:cursor-pointer transition hover:bg-green-700
             ${ adminStatus ? '' : 'hidden' }`
           }
-          href='/pages/new-post'
+          href='/new-post'
         >
           make a new post
         </a>
-        <a
+        <button
           className={
             `bg-green-900 text-lime-500 font-mono text-2xl lg:text-3xl text-center rounded p-4 hover:cursor-pointer transition hover:bg-green-700`
           }
-          href='/pages/view-posts'
+          onClick={() => { navigate('/view-posts') }}
         >
           view posts
-        </a>
+        </button>
       </div>
     </div>
   );

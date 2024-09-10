@@ -1,16 +1,17 @@
-require('dotenv').config();
 import express from 'express';
 import cors from 'cors';
-import postgres = require('../database/db.tsx');
+import postgres from '../database/db.ts';
 import jwt from 'jsonwebtoken';
+import env from 'env-var';
 
 const app = express();
+const secret: string = env.get('TOKEN_SECRET').asString() as string;
 
 app.use(express.json());
 app.use(cors());
 
-app.listen(5000);
-console.log(`Listening on port 5000`);
+app.listen(3001);
+console.log(`Listening on port 3001`);
 
 
 // GET EXISTING POSTS
@@ -24,7 +25,7 @@ app.get(`/posts`, authenticateToken, (req, res) => {
 
 
 // ADD NEW POST
-app.post('/posts', authenticateToken, (req, res) => {
+app.post('/posts/save-new', authenticateToken, (req, res) => {
   postgres.newPost(req.body)
   .then(response => {
     res.send(response);
@@ -36,7 +37,7 @@ app.post('/posts', authenticateToken, (req, res) => {
 
 
 // DELETE POST
-app.put('/posts', authenticateToken, (req, res) => {
+app.put('/posts/delete', authenticateToken, (req, res) => {
   postgres.deletePost(req.body)
   .then(response => {
     res.send(response);
@@ -47,7 +48,7 @@ app.put('/posts', authenticateToken, (req, res) => {
 });
 
 app.get('/find-user', authenticateToken, (req, res) => {
-  postgres.findUser(req.user.name)
+  postgres.findUser(req.body.user.name)
   .then(response => {
     res.send({username: response.rows[0].username, admin: response.rows[0].admin})
   })
@@ -64,12 +65,12 @@ function authenticateToken (req, res, next) {
     return res.sendStatus(401);
   }
 
-  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+  jwt.verify(token, secret, (err, user) => {
     if (err) {
       console.log(err);
       return res.sendStatus(403);
     }
-    req.user = user;
+    req.body.user = user;
     next();
   })
 }

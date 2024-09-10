@@ -1,7 +1,7 @@
 import env from 'env-var';
 import express from 'express';
 import cors from 'cors';
-import postgres = require('../database/db.tsx');
+import postgres from '../database/db.ts';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -45,7 +45,7 @@ app.post('/users/login', async (req, res) => {
       if (response.rows[0]) {
         if (await bcrypt.compare(password, response.rows[0].password)) {
           const accessToken = jwt.sign(user, secret, { expiresIn: '1hr'});
-          res.json({ accessToken: accessToken });
+          res.json({ username: username, admin: response.rows[0].admin, accessToken: accessToken });
         } else {
           res.status(500).send('Incorrect username or password')
         }
@@ -60,3 +60,25 @@ app.post('/users/login', async (req, res) => {
     res.status(500).send()
   }
 });
+
+app.delete('/users/logout', authenticateToken, (req,res) => {
+  res.status(203).send('Successfully logged out.');
+});
+
+function authenticateToken (req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (token == null) {
+    return res.sendStatus(401);
+  }
+
+  jwt.verify(token, secret, (err, user) => {
+    if (err) {
+      console.log(err);
+      return res.sendStatus(403);
+    }
+    req.body.user = user;
+    next();
+  })
+};

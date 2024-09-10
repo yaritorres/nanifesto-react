@@ -1,12 +1,16 @@
-const { Pool } = require('pg');
+/* eslint-disable import/no-anonymous-default-export */
+import pg from 'pg';
 import env from 'env-var';
+import * as dotenv from 'dotenv';
+dotenv.config();
+const { Pool } = pg;
 
 const db = new Pool({
-  user: env.get('DB_USER'),
-  host: env.get('DB_HOST'),
-  database: env.get('DB_NAME'),
-  password: env.get('DB_PASSWORD'),
-  port: env.get('DB_PORT')
+  user: env.get('DB_USER').asString(),
+  host: env.get('DB_HOST').asString(),
+  database: env.get('DB_NAME').asString(),
+  password: env.get('DB_PASSWORD').asString(),
+  port: env.get('DB_PORT').asString()
 });
 
 db.connect();
@@ -30,7 +34,7 @@ const deletePost = ({ id }) => {
   `);
 };
 
-const addUser = (username, password) => {
+const addUser = (username:string, password:string) => {
   return db.query(`
     INSERT INTO authenticated (username, password, admin)
       VALUES ('${username}', '${password}', false)
@@ -43,8 +47,7 @@ const findUser = (username) => {
   `);
 };
 
-
-export = {
+export default {
   getPosts: getPosts,
   newPost: newPost,
   deletePost: deletePost,

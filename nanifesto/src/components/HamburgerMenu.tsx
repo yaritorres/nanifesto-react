@@ -1,35 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from "react";
-const axios = require('axios').default;
+import { useState } from "react";
 
-export default function HamburgerMenu() {
+export default function HamburgerMenu({ loggedAs, adminStatus }) {
   const [hamOpen, setHamOpen] = useState(false);
-  const [adminStatus, setAdminStatus] = useState();
   const handleHam = () => { setHamOpen(!hamOpen) };
-
-  useEffect(() => {
-    const options = {
-      url: 'http://localhost:3000/find-user',
-      headers: {
-        "Authorization": `Bearer ${window.localStorage.accessToken}`
-      }
-    };
-
-    async function findUser () {
-      try {
-        let result;
-
-        result = await axios.get(options.url, {headers: options.headers});
-
-        setAdminStatus(result.data.admin);
-      }
-      catch (err) {
-        console.log(err);
-      }
-    };
-
-    findUser()
-  }, [])
 
   return (
     <>
@@ -69,19 +43,19 @@ export default function HamburgerMenu() {
           transition-all duration-300 ${ hamOpen ? 'left-2' : 'delay-300 opacity-0'}`
         }
       >
-        <Link
+        <a
           onClick={handleHam}
-          href='/pages/home'
+          href='/home'
           className={
             `relative text-xl block font-mono text-green-900 transition hover:text-green-700
             transition-all delay-50 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
           }
         >
           Home
-        </Link>
-        <Link
+        </a>
+        <a
           onClick={handleHam}
-          href='/pages/new-post'
+          href='/new-post'
           className={`
             relative text-xl block font-mono text-green-900 transition hover:text-green-700
             transition-all delay-100
@@ -90,37 +64,39 @@ export default function HamburgerMenu() {
           }
         >
           New Post
-        </Link>
-        <Link
+        </a>
+        <a
           onClick={handleHam}
-          href='/pages/view-posts'
+          href='/view-posts'
           className={`
             relative text-xl block font-mono text-green-900 transition hover:text-green-700
             transition-all delay-200 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
           }
         >
           View Posts
-        </Link>
-        <Link
+        </a>
+        <a
           onClick={handleHam}
-          href='/pages/login'
+          href='/'
           className={`
             relative text-xl block font-mono text-green-900 transition hover:text-green-700
-            transition-all delay-300 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
+            transition-all delay-300
+            ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }
+            ${ loggedAs ? 'hidden' : '' }`
           }
         >
           Log In
-        </Link>
-        <Link
+        </a>
+        <a
           onClick={handleHam}
-          href='/pages/settings'
+          href='/settings'
           className={`
             relative text-xl block font-mono text-green-900 transition hover:text-green-700
             transition-all delay-500 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
           }
         >
           Settings
-        </Link>
+        </a>
       </ul>
       <div
         className={

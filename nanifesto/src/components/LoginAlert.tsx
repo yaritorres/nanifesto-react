@@ -1,15 +1,13 @@
 import React from "react";
 
-export default function LoginAlert(
-  { loggedIn, setLoggedIn, handleRouting }:{ loggedIn:Boolean, setLoggedIn:Function, handleRouting:Function }
-) {
+export default function LoginAlert({ isLoggingIn, setIsLoggingIn, handleRouting }) {
   return (
     <div
       className={
         `flex fixed w-screen h-screen backdrop-blur-sm items-center justify-center z-50
-        ${loggedIn ? 'animate-fadeIn' : 'hidden'}`
+        ${ isLoggingIn ? 'animate-fadeIn' : 'hidden' }`
       }
-      onAnimationEnd={ () => { setLoggedIn(false); handleRouting(); } }
+      onAnimationEnd={ () => { setIsLoggingIn(false); handleRouting(); } }
     >
       <div
         className={

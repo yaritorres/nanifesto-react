@@ -1,20 +1,22 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import DeleteConfirmationModal from "../../components/deleteConfirmationModal";
-const axios = require('axios').default;
+import DeleteConfirmationModal from "../components/DeleteConfirmation.tsx";
+import axios from 'axios';
+import cleanDate from "../hooks/cleanDate.ts";
 
-export default function ViewPosts() {
-  const [posts, setPosts] = useState([]);
+export default function ViewPosts({ adminStatus }) {
+  const [posts, setPosts] = useState<any[]>([]);
   const [deletedItem, setDeletedItem] = useState(0);
-  const [adminStatus, setAdminStatus] = useState();
 
   const handleDelete = ( id:number ) => {
     const options = {
-      url: 'http://localhost:3000/posts',
-      headers: {}
+      url: 'http://localhost:3001/posts/delete',
+      headers: {
+        "Authorization": `Bearer ${window.localStorage.accessToken}`
+      }
     };
 
-    document.getElementById(id)?.classList.add('animate-fadeOut');
+    document.getElementById(id.toString())?.classList.add('animate-fadeOut');
 
     axios.put(options.url, {id: id}, {headers: options.headers})
     .then(() => {
@@ -23,55 +25,28 @@ export default function ViewPosts() {
     .catch(err => console.log(err))
   };
 
-  useEffect(() => {
-    const options = {
-      url: 'http://localhost:3000/find-user',
-      headers: {
-        "Authorization": `Bearer ${window.localStorage.accessToken}`
-      }
-    };
-
-    async function findUser () {
-      try {
-        let result;
-
-        result = await axios.get(options.url, {headers: options.headers});
-
-        setAdminStatus(result.data.admin);
-      }
-      catch (err) {
-        console.log(err);
-      }
-    };
-
-    findUser()
-  }, [])
-
   // GRABS CURRENT POSTS FOUND IN DATABASE AND CUTS OFF PART OF THE DATE THAT
   // IS BEING ADDED ON BY THE DATABASE FOR SOME REASON (IT ADDS TIME POSTED BUT DEFAULTS TO 00:00:00)
   useEffect(() => {
     const options = {
-      url: 'http://localhost:3000/posts',
+      url: 'http://localhost:3001/posts',
       headers: {
         "Authorization": `Bearer ${window.localStorage.accessToken}`
       }
     };
 
-    const cleanDate = (posts) => {
-      for (let i = 0; i < posts.length; i++) {
-        posts[i].date_posted = posts[i].date_posted.split('').splice(0, 10).join('');
-      }
+    const retrievePosts = async () => {
+      try {
+        let database;
 
-      return posts;
-    }
+        database = await axios.get(options.url, {headers: options.headers})
 
-    const retrievePosts = () => {
-      return axios.get(options.url, {headers: options.headers})
-      .then(database => {
         const adjustedData = cleanDate(database.data);
         setPosts(adjustedData.reverse());
-      })
-      .catch(err => console.log('API ERROR:', err))
+      }
+      catch (err) {
+        console.log(err);
+      }
     }
 
     retrievePosts();
@@ -125,7 +100,7 @@ export default function ViewPosts() {
                 onClick={
                   e => {
                     const target = e.target as HTMLButtonElement;
-                    setDeletedItem(target.getAttribute('data-key'));
+                    setDeletedItem(Number(target.getAttribute('data-key')));
                   }
                 }
                 className={`flex h-fit text-lime-800 hover:cursor-pointer transition hover:text-slate-100 place-self-end

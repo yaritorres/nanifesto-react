@@ -16,20 +16,20 @@ export default function Credits({ creditsOpen, setCreditsOpen }:{ creditsOpen:Bo
           }
         >
           <span className={`text-slate-700`}> made by yari torres nicola </span>
-          <Link
+          <a
             href='https://github.com/yaritorres'
             target='noreferrer'
             className={`font-mono text-lime-500 text-3xl hover:cursor-pointer transition hover:text-green-900`}
           >
             github
-          </Link>
-          <Link
+          </a>
+          <a
             href='https://www.linkedin.com/in/yaritorresnicola/'
             target='noreferrer'
             className={`font-mono text-lime-500 text-3xl hover:cursor-pointer transition hover:text-green-900`}
           >
             linkedin
-          </Link>
+          </a>
         </div>
         <button
           onClick={() => { setCreditsOpen(false); }}

@@ -1,17 +1,19 @@
 import React from "react";
-const axios = require('axios').default;
+import axios from 'axios';
 import FailedLoginAlert from "../components/FailedLoginAlert.tsx";
 import LoginAlert from "../components/LoginAlert.tsx";
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
   const [failedLogin, setFailedLogin] = useState<boolean>(false);
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleRouting = () => {
-    // router.push('/pages/home');
+    return navigate('/home');
   }
 
   const handleLogin = () => {
@@ -20,14 +22,12 @@ export default function Login() {
       headers: {}
     };
 
-    let password = `${(document.getElementById('password') as HTMLInputElement).value}`;
-
     axios.post(options.url, {username: username, password: password}, {headers: options.headers})
     .then(response => {
       console.log(response);
       console.log('Logged in!');
       window.localStorage.setItem('accessToken', response.data.accessToken);
-      setLoggedIn(true);
+      setIsLoggingIn(true);
     })
     .catch(() => {
       setFailedLogin(true);
@@ -46,7 +46,7 @@ export default function Login() {
       console.log(response);
       console.log('Logged in!');
       window.localStorage.setItem('accessToken', response.data.accessToken);
-      setLoggedIn(true);
+      setIsLoggingIn(true);
     })
     .catch(() => {
       setFailedLogin(true);
@@ -69,11 +69,11 @@ export default function Login() {
 
   return (
     <>
-      <LoginAlert loggedIn={loggedIn} setLoggedIn={setLoggedIn} handleRouting={handleRouting} />
+      <LoginAlert isLoggingIn={isLoggingIn} setIsLoggingIn={setIsLoggingIn} handleRouting={handleRouting} />
       <FailedLoginAlert failedLogin={failedLogin} setFailedLogin={setFailedLogin} />
       <div
         className={
-          `flex w-screen h-screen bg-slate-100 dark:bg-slate-900 place-content-center place-items-center`
+          `flex w-screen h-screen bg-slate-100 dark:bg-slate-900`
         }
       >
         <div className={`flex flex-col w-full h-full place-items-center place-content-center`}>

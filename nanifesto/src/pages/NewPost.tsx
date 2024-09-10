@@ -1,19 +1,22 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import PostedAlert from "../../components/postedAlert";
-const axios = require('axios').default;
+import { useNavigate } from "react-router-dom";
+import PostedAlert from "../components/PostedAlert.tsx";
+import axios from 'axios';
 
-export default function Blog() {
-  const [posted, setPosted] = useState(false);
-  const [titleExists, setTitleExists] = useState(true);
-  const [bodyExists, setBodyExists] = useState(true);
+export default function NewPost() {
+  const [posted, setPosted] = useState<boolean>(false);
+  const [titleExists, setTitleExists] = useState<boolean>(true);
+  const [bodyExists, setBodyExists] = useState<boolean>(true);
+  const [title, setTitle] = useState<string>('');
+  const [body, setBody] = useState<string>('');
+  const navigate = useNavigate();
+
   const handleRouting = () => {
+    return navigate('/view-posts');
   }
 
   const handleSubmit = () => {
-    let title = `${document.getElementById('title')?.value}`;
-    let body = `${document.getElementById('body')?.value}`;
-
     if (title && body) {
       setTitleExists(true);
       setBodyExists(true);
@@ -29,8 +32,10 @@ export default function Blog() {
 
   const savePost = (title:string, body:string) => {
     const options = {
-      url: 'http://localhost:3000/posts',
-      headers: {}
+      url: 'http://localhost:3001/posts/save-new',
+      headers: {
+        "Authorization": `Bearer ${window.localStorage.accessToken}`
+      }
     };
 
     axios.post(options.url, {title: title, body: body}, {headers: options.headers})
@@ -56,34 +61,6 @@ export default function Blog() {
     }
   }, []);
 
-  useEffect(() => {
-    const options = {
-      url: 'http://localhost:3000/find-user',
-      headers: {
-        "Authorization": `Bearer ${window.localStorage.accessToken}`
-      }
-    };
-
-    async function findUser () {
-      try {
-        let result;
-
-        result = await axios.get(options.url, {headers: options.headers});
-
-        if(result.data.admin) {
-          return;
-        } else {
-          throw Error;
-        };
-      }
-      catch (err) {
-        console.log(err);
-      }
-    };
-
-    findUser()
-  }, [])
-
   return (
     <>
       <PostedAlert posted={posted} setPosted={setPosted} handleRouting={handleRouting} />
@@ -106,6 +83,7 @@ export default function Blog() {
               `dark:text-white bg-lime-400 dark:bg-green-900 rounded border-solid border-2 w-full sm:w-2/4 p-2 overflow-x-auto
               ${ titleExists ? 'border-green-900' : 'border-red-900' }`
             }
+            onChange={(e) => { setTitle(e.target.value)} }
           >
           </input>
           <label className='font-mono text-green-900 dark:text-lime-500 select-none'> body </label>
@@ -114,7 +92,8 @@ export default function Blog() {
             className={
               `dark:text-white bg-lime-400 dark:bg-green-900 rounded border-solid border-2 border-green-900 w-full h-full p-2 overflow-y-auto resize-none ${ bodyExists ? 'border-green-900' : 'border-red-900' }`
             }
-            >
+            onChange={(e) => { setBody(e.target.value)} }
+          >
           </textarea>
           <input
             type='submit'
