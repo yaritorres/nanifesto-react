@@ -11,10 +11,10 @@ export default function PostedAlert({ posted, setPosted, handleRouting }:{ poste
     >
       <div
         className={
-          `flex w-1/6 h-1/6 bg-green-900 rounded text-2xl text-lime-500 border-lime-500 border-solid border-2 items-center justify-center`
+          `flex text-jungle-600 items-center justify-center`
         }
       >
-        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-lime-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <svg className="animate-spin -ml-1 mr-3 h-8 w-8 text-jungle-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
           <path
             className="opacity-75"
@@ -23,7 +23,7 @@ export default function PostedAlert({ posted, setPosted, handleRouting }:{ poste
           >
           </path>
         </svg>
-        <span> posting... </span>
+        <span className={`font-mono text-6xl`}> posting... </span>
       </div>
     </div>
   )

@@ -5,11 +5,17 @@ const options = {
   headers: {}
 };
 
-export default async function findUser(token) {
+export default async function findUser(token:string) {
   try {
     let result;
 
     result = await axios.get(options.url, {headers: {"Authorization": `Bearer ${token}`}});
+
+    if (!result.data.username) {
+      return {
+        username: 'Token Expired'
+      }
+    }
 
     return result.data;
   }

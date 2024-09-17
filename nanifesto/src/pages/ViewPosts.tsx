@@ -50,20 +50,7 @@ export default function ViewPosts({ adminStatus }) {
     }
 
     retrievePosts();
-  }, [JSON.stringify(posts)])
-
-  // SETS CURRENT THEME (LIGHT OR DARK) ON PAGE USING LOCAL STORAGE,
-  // OTHERWISE DEFAULTS TO DARKMODE IF NONE IS SET
-  useEffect(() => {
-    const savedMode = window.localStorage.getItem('theme');
-
-    if (savedMode === '') {
-      document.documentElement.classList.add('dark');
-      window.localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.add(savedMode || 'dark');
-    }
-  });
+  }, [])
 
   return (
     <>
@@ -72,8 +59,7 @@ export default function ViewPosts({ adminStatus }) {
       />
       <div
         className={
-          `flex w-screen h-screen bg-slate-100 dark:bg-slate-900 place-content-center place-items-center
-          transition-all`
+          `flex w-screen h-screen bg-honey-50 place-content-center place-items-center`
         }
       >
         <ul
@@ -86,13 +72,13 @@ export default function ViewPosts({ adminStatus }) {
             key={postKey}
             id={post.id}
             className={
-              `rounded bg-lime-500 w-full h-fit-content`
+              `rounded bg-jungle-300 w-full h-fit-content`
             }
           >
             <div
-              className={`flex flex-col rounded-t w-full h-content font-mono text-lime-500 text-2xl bg-lime-700 p-4 select-none`}
+              className={`flex flex-col rounded-t w-full h-content font-mono text-2xl bg-jungle-600 p-4 select-none`}
             >
-              <label className={`font-mono text-lime-500 text-2xl select-none`}>
+              <label className={`font-mono text-jungle-100 text-2xl select-none`}>
                 {post.title}
               </label>
               <button
@@ -103,17 +89,18 @@ export default function ViewPosts({ adminStatus }) {
                     setDeletedItem(Number(target.getAttribute('data-key')));
                   }
                 }
-                className={`flex h-fit text-lime-800 hover:cursor-pointer transition hover:text-slate-100 place-self-end
+                className={
+                  `flex h-fit text-jungle-800 hover:cursor-pointer transition hover:text-slate-100 place-self-end
                   ${adminStatus ? '' : 'hidden'}`}
               >
                 delete
               </button>
             </div>
             <div className={`border-solid border-slate-100 dark:border-slate-900 border-2 w-full mb-2`}></div>
-            <p className={`w-full h-auto p-4 font-mono text-slate-900 text-xl select-none`}> {post.body} </p>
+            <p className={`w-full h-auto p-4 font-mono text-honey-900 text-xl select-none`}> {post.body} </p>
             <span
               className={
-                `block w-fit h-auto font-mono text-lg text-lime-300 select-none m-4 mt-0`
+                `block w-fit h-auto font-mono text-lg text-jungle-100 select-none m-4 mt-0`
               }
             >
               posted: {post.date_posted}

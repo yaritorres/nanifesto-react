@@ -45,7 +45,7 @@ app.post('/users/login', async (req, res) => {
       if (response.rows[0]) {
         if (await bcrypt.compare(password, response.rows[0].password)) {
           const accessToken = jwt.sign(user, secret, { expiresIn: '1hr'});
-          res.json({ username: username, admin: response.rows[0].admin, accessToken: accessToken });
+          res.json({ accessToken: accessToken });
         } else {
           res.status(500).send('Incorrect username or password')
         }
@@ -61,24 +61,6 @@ app.post('/users/login', async (req, res) => {
   }
 });
 
-app.delete('/users/logout', authenticateToken, (req,res) => {
+app.delete('/users/logout', (req,res) => {
   res.status(203).send('Successfully logged out.');
 });
-
-function authenticateToken (req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-
-  if (token == null) {
-    return res.sendStatus(401);
-  }
-
-  jwt.verify(token, secret, (err, user) => {
-    if (err) {
-      console.log(err);
-      return res.sendStatus(403);
-    }
-    req.body.user = user;
-    next();
-  })
-};

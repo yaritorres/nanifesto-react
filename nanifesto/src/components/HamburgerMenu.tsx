@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
-export default function HamburgerMenu({ loggedAs, adminStatus }) {
+export default function HamburgerMenu({ adminStatus }) {
   const [hamOpen, setHamOpen] = useState(false);
+  const navigate = useNavigate();
+
   const handleHam = () => { setHamOpen(!hamOpen) };
 
   return (
@@ -10,20 +13,20 @@ export default function HamburgerMenu({ loggedAs, adminStatus }) {
       <button
         onClick={handleHam}
         className={
-          `fixed top-2 sm:top-24 left-2 flex flex-col space-y-1 h-12 w-14 bg-green-900 rounded justify-center items-center
-          transition hover:bg-green-700 z-40`
+          `fixed top-2 sm:top-24 left-2 flex flex-col space-y-1 h-12 w-14 bg-honey-900 dark:bg-green-900 rounded justify-center items-center
+          transition hover:bg-honey-700 z-40`
         }
       >
         <span
           className={
-            `block h-1 w-8 rounded bg-lime-500 transition-all`
+            `block h-1 w-8 rounded bg-honey-500 dark:bg-lime-500`
           }
         >
         </span>
         <div className='w-8'>
           <span
             className={
-              `h-1 rounded bg-lime-500 block transition-all ${ hamOpen ? 'w-6 place-self-start' : 'w-8' }`
+              `h-1 rounded bg-honey-500 dark:bg-lime-500 block transition-all ${ hamOpen ? 'w-6 place-self-start' : 'w-8' }`
             }
           >
           </span>
@@ -31,7 +34,7 @@ export default function HamburgerMenu({ loggedAs, adminStatus }) {
         <div className='w-8'>
           <span
             className={
-              `h-1 rounded bg-lime-500 block transition-all ${ hamOpen ? 'w-4 place-self-start' : 'w-8' }`
+              `h-1 rounded bg-honey-500 dark:bg-lime-500 block transition-all ${ hamOpen ? 'w-4 place-self-start' : 'w-8' }`
             }
           >
           </span>
@@ -39,69 +42,50 @@ export default function HamburgerMenu({ loggedAs, adminStatus }) {
       </button>
       <ul
         className={
-          `fixed top-16 sm:top-40 left-2 bg-lime-500 p-4 h-fit-content w-40 rounded flex flex-col justify-center items-center z-40
-          transition-all duration-300 ${ hamOpen ? 'left-2' : 'delay-300 opacity-0'}`
+          `fixed top-16 sm:top-40 left-2 bg-jungle-600 p-4 h-fit-content w-40 rounded flex flex-col justify-center items-center z-40
+          text-xl font-mono text-honey-100
+          transition-all ${ hamOpen ? '' : 'delay-200 opacity-0'}`
         }
       >
-        <a
-          onClick={handleHam}
-          href='/home'
+        <button
+          onClick={() => { handleHam(); navigate('/home');  }}
           className={
-            `relative text-xl block font-mono text-green-900 transition hover:text-green-700
-            transition-all delay-50 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
+            `relative transition-all hover:text-honey-300 delay-50 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
           }
         >
           Home
-        </a>
-        <a
-          onClick={handleHam}
-          href='/new-post'
+        </button>
+        <button
+          onClick={() => { handleHam(); navigate('/new-post');  }}
           className={`
-            relative text-xl block font-mono text-green-900 transition hover:text-green-700
-            transition-all delay-100
+            relative transition-all hover:text-honey-300 delay-100
             ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }
             ${ adminStatus ? '' : 'hidden' }`
           }
         >
           New Post
-        </a>
-        <a
-          onClick={handleHam}
-          href='/view-posts'
+        </button>
+        <button
+          onClick={() => { handleHam(); navigate('/view-posts');  }}
           className={`
-            relative text-xl block font-mono text-green-900 transition hover:text-green-700
-            transition-all delay-200 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
+            relative transition hover:text-honey-300 transition-all ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
           }
         >
           View Posts
-        </a>
-        <a
-          onClick={handleHam}
-          href='/'
+        </button>
+        <button
+          onClick={() => { handleHam(); navigate('/settings');  }}
           className={`
-            relative text-xl block font-mono text-green-900 transition hover:text-green-700
-            transition-all delay-300
-            ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }
-            ${ loggedAs ? 'hidden' : '' }`
-          }
-        >
-          Log In
-        </a>
-        <a
-          onClick={handleHam}
-          href='/settings'
-          className={`
-            relative text-xl block font-mono text-green-900 transition hover:text-green-700
-            transition-all delay-500 ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
+            relative transition hover:text-honey-300 transition-all ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
           }
         >
           Settings
-        </a>
+        </button>
       </ul>
       <div
         className={
           `fixed w-screen h-screen bg-transparent inset-0 transition-all duration-300
-          ${ hamOpen ? 'backdrop-blur-sm animate-fastFadeIn' : 'hidden' }`
+          ${ hamOpen ? '' : 'hidden' }`
         }
         onClick={handleHam}
       >

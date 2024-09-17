@@ -13,18 +13,41 @@ import findUser from './hooks/findUser.ts';
 function App() {
   const [loggedAs, setLoggedAs] = useState<string>('');
   const [adminStatus, setAdminStatus] = useState<boolean>();
+  const [dark, setDark] = useState<boolean>(false);
   const location = useLocation();
+
+  // SETS CURRENT THEME (LIGHT OR DARK) ON PAGE USING LOCAL STORAGE,
+  // OTHERWISE DEFAULTS TO DARKMODE IF NONE IS SET
+  useEffect(() => {
+    const savedMode = window.localStorage.getItem('theme');
+
+    if (savedMode === '') {
+      document.documentElement.classList.add('dark');
+      setDark(true);
+    } else if (savedMode === 'dark') {
+      document.documentElement.classList.add('dark');
+      setDark(true);
+    } else {
+      document.documentElement.classList.add('light');
+      setDark(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (!window.localStorage.getItem('accessToken')) {
-      console.log('running in app...');
       return;
     }
 
     async function checkUser () {
       let result;
 
-      result = await findUser(window.localStorage.getItem('accessToken'));
+      result = await findUser(window.localStorage.getItem('accessToken') ?? '');
+
+      if (!result) {
+        setLoggedAs('Token Expired');
+        setAdminStatus(false);
+        return;
+      }
 
       setLoggedAs(result.username);
       setAdminStatus(result.admin);
@@ -33,21 +56,22 @@ function App() {
   }, [location])
 
   const path =  new URL(window.location.href).pathname;
-  console.log('PATH:', path);
+  console.log(dark);
+  console.log(window.localStorage.getItem('theme'));
 
   return (
     <>
       <Header loggedAs={loggedAs} setLoggedAs={setLoggedAs} />
-      { path === '/' ? null : <HamburgerMenu adminStatus={adminStatus} loggedAs={loggedAs} /> }
+      { path === '/' ? null : <HamburgerMenu adminStatus={adminStatus} /> }
       <Routes>
         <Route path="/" element={<Login />} />
         <Route
           path="/home"
-          element={<Home findUser={findUser} setLoggedAs={setLoggedAs} adminStatus={adminStatus} setAdminStatus={setAdminStatus} />}
+          element={<Home adminStatus={adminStatus} />}
         />
-        <Route path="/new-post" element={<NewPost />} />
+        <Route path="/new-post" element={<NewPost adminStatus={adminStatus} />} />
         <Route path="/view-posts" element={<ViewPosts adminStatus={adminStatus} />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/settings" element={<Settings dark={dark} setDark={setDark} />} />
       </Routes>
     </>
   );
