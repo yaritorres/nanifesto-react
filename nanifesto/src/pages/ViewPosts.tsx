@@ -59,7 +59,7 @@ export default function ViewPosts({ adminStatus }) {
       />
       <div
         className={
-          `flex w-screen h-screen bg-honey-50 place-content-center place-items-center`
+          `flex w-screen h-screen bg-honey-50 dark:bg-sapphire-950 place-content-center place-items-center`
         }
       >
         <ul
@@ -72,13 +72,13 @@ export default function ViewPosts({ adminStatus }) {
             key={postKey}
             id={post.id}
             className={
-              `rounded bg-jungle-300 w-full h-fit-content`
+              `rounded bg-jungle-300 dark:bg-sapphire-400 w-full h-fit-content`
             }
           >
             <div
-              className={`flex flex-col rounded-t w-full h-content font-mono text-2xl bg-jungle-600 p-4 select-none`}
+              className={`flex flex-col rounded-t w-full h-content font-mono text-2xl bg-jungle-600 dark:bg-sapphire-700 p-4 select-none`}
             >
-              <label className={`font-mono text-jungle-100 text-2xl select-none`}>
+              <label className={`font-mono text-jungle-100 dark:text-sapphire-200 text-2xl select-none`}>
                 {post.title}
               </label>
               <button
@@ -90,17 +90,17 @@ export default function ViewPosts({ adminStatus }) {
                   }
                 }
                 className={
-                  `flex h-fit text-jungle-800 hover:cursor-pointer transition hover:text-slate-100 place-self-end
+                  `flex h-fit text-jungle-800 dark:text-sapphire-900 hover:cursor-pointer transition hover:text-slate-100 hover:text-sapphire-100 place-self-end
                   ${adminStatus ? '' : 'hidden'}`}
               >
                 delete
               </button>
             </div>
             <div className={`border-solid border-slate-100 dark:border-slate-900 border-2 w-full mb-2`}></div>
-            <p className={`w-full h-auto p-4 font-mono text-honey-900 text-xl select-none`}> {post.body} </p>
+            <p className={`w-full h-auto p-4 font-mono text-honey-900 dark:text-sapphire-950 text-xl select-none`}> {post.body} </p>
             <span
               className={
-                `block w-fit h-auto font-mono text-lg text-jungle-100 select-none m-4 mt-0`
+                `block w-fit h-auto font-mono text-lg text-jungle-100 dark:text-sapphire-200 select-none m-4 mt-0`
               }
             >
               posted: {post.date_posted}

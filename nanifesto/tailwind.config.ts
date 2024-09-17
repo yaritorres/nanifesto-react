@@ -50,7 +50,20 @@ const config: Config = {
           '700': '#07560A',
           '800': '#023E06',
           '900': '#001F02'
-        }
+        },
+        'sapphire': {
+          '50': '#E7F3FD',
+          '100': '#BDDDFB',
+          '200': '#95C4F6',
+          '300': '#6BACEF',
+          '400': '#4F97E3',
+          '500': '#3C85D3',
+          '600': '#2970BC',
+          '700': '#1A579D',
+          '800': '#10427A',
+          '900': '#08284E',
+          '950': '#020E1C',
+        },
       },
       keyframes: {
         fadeOut: {
@@ -70,14 +83,6 @@ const config: Config = {
             opacity: '1'
           }
         },
-        fastFadeIn: {
-          '0%': {
-            opacity: '0',
-          },
-          '100%': {
-            opacity: '1',
-          },
-        }
       },
       animation: {
         ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1)',
