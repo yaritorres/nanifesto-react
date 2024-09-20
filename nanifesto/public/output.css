@@ -1366,6 +1366,11 @@ video {
   background-color: rgb(79 151 227 / var(--tw-bg-opacity));
 }
 
+.dark\:bg-sapphire-500:where(.dark, .dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 133 211 / var(--tw-bg-opacity));
+}
+
 .dark\:text-sapphire-200:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(149 196 246 / var(--tw-text-opacity));
@@ -1414,6 +1419,21 @@ video {
 .hover\:dark\:bg-sapphire-400:where(.dark, .dark *):hover {
   --tw-bg-opacity: 1;
   background-color: rgb(79 151 227 / var(--tw-bg-opacity));
+}
+
+.hover\:dark\:bg-sapphire-500:where(.dark, .dark *):hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 133 211 / var(--tw-bg-opacity));
+}
+
+.hover\:dark\:bg-sapphire-300:where(.dark, .dark *):hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 172 239 / var(--tw-bg-opacity));
+}
+
+.hover\:dark\:bg-sapphire-600:where(.dark, .dark *):hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(41 112 188 / var(--tw-bg-opacity));
 }
 
 .hover\:dark\:text-sapphire-500:where(.dark, .dark *):hover {
