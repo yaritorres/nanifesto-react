@@ -12,21 +12,21 @@ export default function Credits({ creditsOpen, setCreditsOpen }:{ creditsOpen:Bo
       <div className={`flex flex-col w-5/6 h-2/6 sm:w-4/6 md:w-3/6 md:h-1/6 lg:w-3/6 lg:h-1/6 xl:w-2/6 xl:h-2/6 space-y-2`}>
         <div
           className={
-            `flex flex-col w-full h-full bg-honey-50 rounded border-solid border-jungle-600 border-4 text-jungle-600 text-center font-mono space-y-4 p-4`
+            `flex flex-col w-full h-full bg-matcha-50 rounded border-solid border-matcha-500 border-4 text-matcha-500 text-center font-mono space-y-4 p-4`
           }
         >
           <span className={`text-xl`}> made by yari torres nicola </span>
           <a
             href='https://github.com/yaritorres'
             target='noreferrer'
-            className={`text-3xl hover:cursor-pointer transition hover:text-jungle-300`}
+            className={`text-3xl hover:cursor-pointer transition hover:text-matcha-300`}
           >
             github
           </a>
           <a
             href='https://www.linkedin.com/in/yaritorresnicola/'
             target='noreferrer'
-            className={`text-3xl hover:cursor-pointer transition hover:text-jungle-300`}
+            className={`text-3xl hover:cursor-pointer transition hover:text-matcha-300`}
           >
             linkedin
           </a>
@@ -34,7 +34,7 @@ export default function Credits({ creditsOpen, setCreditsOpen }:{ creditsOpen:Bo
         <button
           onClick={() => { setCreditsOpen(false); }}
           className={
-            `bg-jungle-600 text-honey-50 text-xl font-mono rounded p-2 transition-all hover:bg-jungle-300 hover:cursor-pointer self-end`
+            `bg-matcha-500 text-matcha-50 text-xl font-mono rounded p-2 transition-all hover:bg-matcha-300 hover:cursor-pointer self-end`
           }
         >
             close

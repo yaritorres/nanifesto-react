@@ -54,14 +54,14 @@ export default function NewPost({ adminStatus }) {
       <div
         className={`flex w-screen h-screen bg-honey-50 place-items-center place-content-center text-jungle-500`}
       >
-        henlo unauthorized user
+        henlo unauthorized user !! get out of here freak !
       </div>
       :
       <>
         <PostedAlert posted={posted} setPosted={setPosted} handleRouting={handleRouting} />
         <div
           className={
-            `flex w-screen h-screen bg-honey-50 place-items-center place-content-center`
+            `flex w-screen h-screen bg-matcha-50 place-items-center place-content-center`
           }
         >
           <form
@@ -70,20 +70,20 @@ export default function NewPost({ adminStatus }) {
             }
             onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}
           >
-            <label className='font-mono text-honey-800 text-2xl select-none'> title </label>
+            <label className='font-mono text-matcha-500 text-2xl select-none'> title </label>
             <input
               type='text'
               className={
-                `text-jungle-600 bg-honey-200 rounded border-solid border-2 w-full sm:w-2/4 p-2 overflow-x-auto
+                `text-matcha-900 bg-honey-200 rounded border-solid border-2 w-full sm:w-2/4 p-2 overflow-x-auto
                 ${ titleExists ? 'border-honey-800' : 'border-red-900' }`
               }
               onChange={(e) => { setTitle(e.target.value)} }
             >
             </input>
-            <label className='font-mono text-honey-800 text-2xl select-none'> body </label>
+            <label className='font-mono text-matcha-500 text-2xl select-none'> body </label>
             <textarea
               className={
-                `text-jungle-600 bg-honey-200 rounded border-solid border-2 w-full h-full p-2 overflow-y-auto resize-none
+                `text-matcha-900 bg-honey-200 rounded border-solid border-2 w-full h-full p-2 overflow-y-auto resize-none
                 ${ bodyExists ? 'border-honey-800' : 'border-red-900' }`
               }
               onChange={(e) => { setBody(e.target.value)} }
@@ -93,7 +93,7 @@ export default function NewPost({ adminStatus }) {
               type='submit'
               value='save and post'
               className={
-                `bg-jungle-600 font-mono text-honey-50 rounded p-2 self-end hover:cursor-pointer transition-all hover:bg-jungle-400`
+                `bg-matcha-500 font-mono text-matcha-50 rounded p-2 self-end hover:cursor-pointer transition-all hover:bg-matcha-300`
               }
             >
             </input>
