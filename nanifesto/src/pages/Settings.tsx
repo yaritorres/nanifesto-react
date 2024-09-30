@@ -28,7 +28,7 @@ export default function Settings({ dark, setDark }) {
       <div className={`flex w-screen h-screen bg-matcha-50 dark:bg-slate-900 place-content-center place-items-center`}>
         <div
           className={
-            `flex flex-col justify-center items-center space-y-4 w-4/6 h-2/6 md:w-3/6 font-mono text-matcha-400 text-3xl lg:text-6xl`
+            `flex flex-col justify-center items-center space-y-4 w-full md:w-3/6 font-mono text-matcha-400 text-6xl`
           }
         >
           <span

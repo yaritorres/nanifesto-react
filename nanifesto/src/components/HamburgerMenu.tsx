@@ -80,6 +80,14 @@ export default function HamburgerMenu({ adminStatus }) {
         >
           Settings
         </button>
+        <button
+          onClick={() => { handleHam(); navigate('/');  }}
+          className={`
+            relative transition hover:text-honey-300 transition-all ${ hamOpen ? 'left-0 opacity-100' : '-left-24 opacity-0' }`
+          }
+        >
+          Log Out
+        </button>
       </ul>
       <div
         className={

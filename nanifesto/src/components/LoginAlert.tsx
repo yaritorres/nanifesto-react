@@ -11,10 +11,10 @@ export default function LoginAlert({ isLoggingIn, setIsLoggingIn, handleRouting 
     >
       <div
         className={
-          `flex w-1/6 h-1/6 bg-green-900 rounded text-2xl text-lime-500 border-lime-500 border-solid border-2 items-center justify-center`
+          `flex w-4/6 lg:w-1/6 h-1/6 bg-honey-50 rounded text-2xl text-matcha-500 items-center justify-center`
         }
       >
-        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-lime-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <svg className="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
           <path
             className="opacity-75"

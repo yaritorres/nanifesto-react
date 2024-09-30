@@ -13,7 +13,7 @@ export default function FailedLoginAlert(
     >
       <div
         className={
-          `flex w-1/6 h-1/6 bg-green-900 rounded text-2xl text-lime-500 border-lime-500 border-solid border-2 items-center justify-center`
+          `flex w-5/6 lg:w-2/6 h-1/6 lg:h-2/6 bg-honey-50 rounded text-3xl lg:text-5xl text-matcha-500 items-center justify-center`
         }
       >
         <span className={`text-center`}> incorrect username or password </span>

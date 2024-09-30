@@ -59,7 +59,7 @@ export default function ViewPosts({ adminStatus }) {
       />
       <div
         className={
-          `flex w-screen h-screen bg-matcha-50 dark:bg-sapphire-950 place-content-center place-items-center`
+          `flex w-full h-screen bg-matcha-50 dark:bg-sapphire-950 place-content-center place-items-center`
         }
       >
         <ul
@@ -72,11 +72,11 @@ export default function ViewPosts({ adminStatus }) {
             key={postKey}
             id={post.id}
             className={
-              `rounded bg-honey-300 dark:bg-sapphire-400 w-full h-fit-content`
+              `rounded bg-honey-300 dark:bg-sapphire-400 h-fit`
             }
           >
             <div
-              className={`flex flex-col rounded-t w-full h-content font-mono text-2xl bg-honey-900 dark:bg-sapphire-700 p-4 select-none`}
+              className={`flex flex-col rounded-t font-mono text-2xl bg-honey-900 dark:bg-sapphire-700 p-4 select-none`}
             >
               <label className={`font-mono text-matcha-300 dark:text-sapphire-200 text-2xl select-none`}>
                 {post.title}

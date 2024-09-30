@@ -9,7 +9,7 @@ export default function Credits({ creditsOpen, setCreditsOpen }:{ creditsOpen:Bo
       }
       onClick={() => { setCreditsOpen(false); }}
     >
-      <div className={`flex flex-col w-5/6 h-2/6 sm:w-4/6 md:w-3/6 md:h-1/6 lg:w-3/6 lg:h-1/6 xl:w-2/6 xl:h-2/6 space-y-2`}>
+      <div className={`flex flex-col w-5/6 h-1/4 sm:w-4/6 md:w-3/6 md:h-1/6 lg:w-3/6 lg:h-1/6 xl:w-2/6 xl:h-2/6 space-y-2`}>
         <div
           className={
             `flex flex-col w-full h-full bg-matcha-50 rounded border-solid border-matcha-500 border-4 text-matcha-500 text-center font-mono space-y-4 p-4`

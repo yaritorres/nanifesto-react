@@ -73,31 +73,31 @@ export default function Login() {
       <FailedLoginAlert failedLogin={failedLogin} setFailedLogin={setFailedLogin} />
       <div
         className={
-          `flex w-screen h-screen bg-honey-50 dark:bg-sapphire-950`
+          `flex w-screen h-screen bg-matcha-50 dark:bg-sapphire-950`
         }
       >
         <div className={`flex flex-col w-full h-full place-items-center place-content-center`}>
           <form
             onSubmit={(e) => { e.preventDefault(); handleLogin(); }}
             className={
-              `flex flex-col w-3/6 sm:w-2/4 lg:w-4/6 xl:w-2/6 rounded space-y-4 bg-green-900 dark:bg-sapphire-900 p-4 place-content-center mb-4`
+              `flex flex-col w-5/6 sm:w-2/4 lg:w-4/6 xl:w-2/6 rounded space-y-4 bg-honey-900 dark:bg-sapphire-900 p-4 place-content-center mb-4`
             }
           >
-            <span className={`text-3xl text-lime-500 dark:text-sapphire-600 font-mono place-self-center`}> welcome to nanifesto </span>
+            <span className={`text-3xl text-matcha-300 dark:text-sapphire-600 font-mono text-center`}> welcome to nanifesto </span>
             <div className={``}>
-              <label className={`text-lime-500 dark:text-sapphire-600 font-mono text-xl`}> username </label>
+              <label className={`text-matcha-300 dark:text-sapphire-600 font-mono text-xl`}> username </label>
               <input
                 id='username'
                 type='text'
-                className={`w-full h-12 rounded bg-green-600 dark:bg-sapphire-600 mb-4 dark:text-white p-4`}
+                className={`w-full h-12 rounded bg-matcha-300 dark:bg-sapphire-600 mb-4 text-matcha-50 dark:text-white p-4`}
                 onChange={(e) => { setUsername(e.target.value); }}
               >
               </input>
-              <label className={`text-lime-500 dark:text-sapphire-600 font-mono text-xl`}> password </label>
+              <label className={`text-matcha-300 dark:text-sapphire-600 font-mono text-xl`}> password </label>
               <input
                 id='password'
                 type='password'
-                className={`w-full h-12 rounded bg-green-600 dark:bg-sapphire-600 dark:text-white p-4`}
+                className={`w-full h-12 rounded bg-matcha-300 dark:bg-sapphire-600 text-matcha-50 dark:text-white p-4`}
                 onChange={(e) => { setPassword(e.target.value); }}
               >
               </input>
@@ -106,12 +106,12 @@ export default function Login() {
                 type='submit'
                 value='log in'
                 className={
-                  `bg-green-900 dark:bg-sapphire-800 font-mono text-lime-500 dark:text-sapphire-500 text-xl rounded p-2 self-end transition-all hover:bg-green-700 hover:dark:bg-sapphire-600 hover:cursor-pointer`
+                  `bg-matcha-500 dark:bg-sapphire-800 font-mono text-matcha-50 dark:text-sapphire-500 text-xl rounded p-2 self-end transition-all hover:bg-matcha-300 hover:dark:bg-sapphire-600 hover:cursor-pointer`
                 }
               >
             </input>
           </form>
-          <button onClick={handleGuestLogin} className={`text-lime-500 dark:text-sapphire-600`}> continue as guest </button>
+          <button onClick={handleGuestLogin} className={`text-3xl lg:text-base text-matcha-500 dark:text-sapphire-600`}> continue as guest </button>
         </div>
       </div>
     </>
