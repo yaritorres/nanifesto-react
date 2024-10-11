@@ -31,7 +31,7 @@ export default function Header({ loggedAs, setLoggedAs }) {
       }
     >
       <a
-        href='/home'
+        href={ path === '/' ? '/' : '/home' }
         className={
           `transition text-matcha-300 dark:text-sapphire-500 hover:text-matcha-100 hover:dark:text-sapphire-300`
         }

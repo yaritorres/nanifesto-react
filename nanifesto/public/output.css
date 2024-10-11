@@ -1516,6 +1516,10 @@ video {
 }
 
 @media (min-width: 1024px) {
+  .lg\:hidden {
+    display: none;
+  }
+
   .lg\:h-1\/6 {
     height: 16.666667%;
   }
