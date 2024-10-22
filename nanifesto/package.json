@@ -35,6 +35,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "static": "nodemon --exec node --loader ts-node/esm ./server/static.ts",
     "express": "nodemon --exec node --loader ts-node/esm ./server/index.ts",
     "auth": "nodemon --exec node --loader ts-node/esm ./server/authServer.ts"
   },
