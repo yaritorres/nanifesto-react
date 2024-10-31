@@ -32,7 +32,7 @@ export default function NewPost({ adminStatus }) {
 
   const savePost = (title:string, body:string) => {
     const options = {
-      url: 'http://localhost:3001/posts/save-new',
+      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:9000/posts/save-new',
       headers: {
         "Authorization": `Bearer ${window.localStorage.accessToken}`
       }

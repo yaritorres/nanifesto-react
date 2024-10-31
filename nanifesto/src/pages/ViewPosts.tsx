@@ -10,7 +10,7 @@ export default function ViewPosts({ adminStatus }) {
 
   const handleDelete = ( id:number ) => {
     const options = {
-      url: 'http://localhost:3001/posts/delete',
+      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:9000/posts/delete',
       headers: {
         "Authorization": `Bearer ${window.localStorage.accessToken}`
       }
@@ -29,7 +29,7 @@ export default function ViewPosts({ adminStatus }) {
   // IS BEING ADDED ON BY THE DATABASE FOR SOME REASON (IT ADDS TIME POSTED BUT DEFAULTS TO 00:00:00)
   useEffect(() => {
     const options = {
-      url: 'http://localhost:3001/posts',
+      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:9000/posts',
       headers: {
         "Authorization": `Bearer ${window.localStorage.accessToken}`
       }
