@@ -6,11 +6,11 @@ dotenv.config();
 const { Pool } = pg;
 
 const db = new Pool({
-  user: env.get('DB_USER').asString(),
-  host: env.get('DB_HOST').asString(),
-  database: env.get('DB_NAME').asString(),
-  password: env.get('DB_PASSWORD').asString(),
-  port: env.get('DB_PORT').asString()
+  user: env.get('DEPLOYED_USER').asString(),
+  host: env.get('DEPLOYED_HOST').asString(),
+  database: env.get('DEPLOYED_NAME').asString(),
+  password: env.get('DEPLOYED_PASSWORD').asString(),
+  port: env.get('DEPLOYED_PORT').asString()
 });
 
 db.connect();
