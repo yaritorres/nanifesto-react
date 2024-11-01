@@ -5,16 +5,22 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 const { Pool } = pg;
 
+// const db = new Pool({
+//   user: env.get('DEPLOYED_USER').asString(),
+//   host: env.get('DEPLOYED_HOST').asString(),
+//   database: env.get('DEPLOYED_NAME').asString(),
+//   password: env.get('DEPLOYED_PASSWORD').asString(),
+//   port: env.get('DEPLOYED_PORT').asString()
+// });
+
 const db = new Pool({
-  user: env.get('DEPLOYED_USER').asString(),
-  host: env.get('DEPLOYED_HOST').asString(),
-  database: env.get('DEPLOYED_NAME').asString(),
-  password: env.get('DEPLOYED_PASSWORD').asString(),
-  port: env.get('DEPLOYED_PORT').asString()
+  connectionString: env.get('DEPLOYED_ADDRESS').asString(),
+  ssl: {
+    rejectUnauthorized: false // If your Aiven instance uses SSL
+  }
 });
 
 console.log('connecting to database...');
-
 db.connect();
 
 const getPosts = () => {
