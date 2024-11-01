@@ -22,6 +22,8 @@ export default function Login() {
       headers: {}
     };
 
+    console.log('THIS IS THE URL:', options.url);
+
     axios.post(options.url, {username: username, password: password}, {headers: options.headers})
     .then(response => {
       console.log(response);
