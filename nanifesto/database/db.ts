@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import pg from 'pg';
+import fs from 'fs';
 import env from 'env-var';
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -12,7 +13,8 @@ const db = new Pool({
   password: env.get('DEPLOYED_PASSWORD').asString(),
   port: env.get('DEPLOYED_PORT').asString(),
   ssl: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
+    ca: fs.readFileSync("./ca.pem").toString()
   }
 });
 
