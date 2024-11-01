@@ -2,9 +2,13 @@
 import pg from 'pg';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import env from 'env-var';
 import * as dotenv from 'dotenv';
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename);
 const { Pool } = pg;
 
 const db = new Pool({
