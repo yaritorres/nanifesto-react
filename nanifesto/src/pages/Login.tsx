@@ -5,6 +5,8 @@ import LoginAlert from "../components/LoginAlert.tsx";
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
+axios.defaults.baseURL = 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000';
+
 export default function Login() {
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
   const [failedLogin, setFailedLogin] = useState<boolean>(false);
