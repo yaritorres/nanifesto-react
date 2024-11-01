@@ -14,7 +14,7 @@ const db = new Pool({
   port: env.get('DEPLOYED_PORT').asString(),
   ssl: {
     rejectUnauthorized: false,
-    ca: fs.readFileSync('../ca.pem').toString()
+    ca: fs.readFileSync('nanifesto/ca.pem').toString()
   }
 });
 
