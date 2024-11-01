@@ -13,6 +13,8 @@ const db = new Pool({
   port: env.get('DEPLOYED_PORT').asString()
 });
 
+console.log('connecting to database...');
+
 db.connect();
 
 const getPosts = () => {
