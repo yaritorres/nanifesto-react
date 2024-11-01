@@ -8,7 +8,9 @@ const app = express();
 const secret: string = env.get('TOKEN_SECRET').asString() as string;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:9000/'
+}));
 
 app.listen(3001);
 console.log(`Listening on port 3001`);

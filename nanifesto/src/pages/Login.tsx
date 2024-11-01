@@ -18,7 +18,7 @@ export default function Login() {
 
   const handleLogin = () => {
     const options = {
-      url: 'http://localhost:4000/users/login',
+      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/login',
       headers: {}
     };
 
@@ -39,7 +39,7 @@ export default function Login() {
 
   const handleGuestLogin = () => {
     const options = {
-      url: 'http://localhost:4000/users/login',
+      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/login',
       headers: {}
     };
 
