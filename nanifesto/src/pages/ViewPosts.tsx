@@ -10,7 +10,6 @@ export default function ViewPosts({ adminStatus }) {
 
   const handleDelete = ( id:number ) => {
     const options = {
-      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001/posts/delete',
       headers: {
         "Authorization": `Bearer ${window.localStorage.accessToken}`
       }
@@ -18,7 +17,7 @@ export default function ViewPosts({ adminStatus }) {
 
     document.getElementById(id.toString())?.classList.add('animate-fadeOut');
 
-    axios.put(options.url, {id: id}, {headers: options.headers})
+    axios.put(process.env.DATA_URL + '/posts/delete', {id: id}, {headers: options.headers})
     .then(() => {
       console.log('Deleted!');
     })
@@ -29,7 +28,6 @@ export default function ViewPosts({ adminStatus }) {
   // IS BEING ADDED ON BY THE DATABASE FOR SOME REASON (IT ADDS TIME POSTED BUT DEFAULTS TO 00:00:00)
   useEffect(() => {
     const options = {
-      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001/posts',
       headers: {
         "Authorization": `Bearer ${window.localStorage.accessToken}`
       }
@@ -39,7 +37,7 @@ export default function ViewPosts({ adminStatus }) {
       try {
         let database;
 
-        database = await axios.get(options.url, {headers: options.headers})
+        database = await axios.get(process.env.DATA_URL + '/posts', {headers: options.headers})
 
         const adjustedData = cleanDate(database.data);
         setPosts(adjustedData.reverse());

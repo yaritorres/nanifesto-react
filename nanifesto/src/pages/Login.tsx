@@ -17,12 +17,7 @@ export default function Login() {
   }
 
   const handleLogin = () => {
-    const options = {
-      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/login',
-      headers: {}
-    };
-
-    axios.post(options.url, {username: username, password: password}, {headers: options.headers})
+    axios.post(process.env.AUTH_URL + '/users/login', {username: username, password: password}, {headers: {}})
     .then(response => {
       console.log(response);
       console.log('Logged in!');
@@ -36,12 +31,7 @@ export default function Login() {
   }
 
   const handleGuestLogin = () => {
-    const options = {
-      url: 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/login',
-      headers: {}
-    };
-
-    axios.post(options.url, {username: 'guest', password: 'guest'}, {headers: options.headers})
+    axios.post(process.env.AUTH_URL + '/users/login', {username: 'guest', password: 'guest'}, {headers: {}})
     .then(response => {
       console.log(response);
       console.log('Logged in!');
