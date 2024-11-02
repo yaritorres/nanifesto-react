@@ -4,7 +4,7 @@ import DeleteConfirmationModal from "../components/DeleteConfirmation.tsx";
 import axios from 'axios';
 import cleanDate from "../hooks/cleanDate.ts";
 
-axios.defaults.baseURL = 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001';
+// axios.defaults.baseURL = 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001';
 
 export default function ViewPosts({ adminStatus }) {
   const [posts, setPosts] = useState<any[]>([]);
@@ -19,7 +19,7 @@ export default function ViewPosts({ adminStatus }) {
 
     document.getElementById(id.toString())?.classList.add('animate-fadeOut');
 
-    axios.put('/posts/delete', {id: id}, {headers: options.headers})
+    axios.put('http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001/posts/delete', {id: id}, {headers: options.headers})
     .then(() => {
       console.log('Deleted!');
     })
@@ -39,7 +39,7 @@ export default function ViewPosts({ adminStatus }) {
       try {
         let database;
 
-        database = await axios.get('/posts', {headers: options.headers})
+        database = await axios.get('http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001/posts', {headers: options.headers})
 
         const adjustedData = cleanDate(database.data);
         setPosts(adjustedData.reverse());
