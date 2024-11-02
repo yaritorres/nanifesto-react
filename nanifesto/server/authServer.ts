@@ -14,7 +14,7 @@ app.use(cors());
 app.listen(4000);
 console.log(`Listening on port 4000`);
 
-app.post('/users/create', async (req, res) => {
+app.post('http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/create', async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10)
   try {
     postgres.addUser(req.body.username, hashedPassword)
@@ -31,7 +31,7 @@ app.post('/users/create', async (req, res) => {
   }
 });
 
-app.post('/users/login', async (req, res) => {
+app.post('http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/login', async (req, res) => {
   const username = req.body.username;
   const user = { name: username };
   const password = req.body.password;
@@ -61,6 +61,6 @@ app.post('/users/login', async (req, res) => {
   }
 });
 
-app.delete('/users/logout', (req,res) => {
+app.delete('http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/logout', (req,res) => {
   res.status(203).send('Successfully logged out.');
 });

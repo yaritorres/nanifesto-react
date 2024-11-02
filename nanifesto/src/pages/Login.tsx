@@ -19,7 +19,7 @@ export default function Login() {
   }
 
   const handleLogin = () => {
-    axios.post('http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/login', {username: username, password: password}, {headers: {}})
+    axios.post('/users/login', {username: username, password: password}, {headers: {}})
     .then(response => {
       console.log(response);
       console.log('Logged in!');
@@ -33,7 +33,7 @@ export default function Login() {
   }
 
   const handleGuestLogin = () => {
-    axios.post('http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000/users/login', {username: 'guest', password: 'guest'}, {headers: {}})
+    axios.post('/users/login', {username: 'guest', password: 'guest'}, {headers: {}})
     .then(response => {
       console.log(response);
       console.log('Logged in!');
