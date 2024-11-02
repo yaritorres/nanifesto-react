@@ -2,17 +2,18 @@ import React from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
+axios.defaults.baseURL = 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:4000';
+
 export default function Header({ loggedAs, setLoggedAs }) {
   const path =  new URL(window.location.href).pathname;
   const navigate = useNavigate();
 
   const handleLogout = () => {
     const options = {
-      url: 'http://localhost:4000/users/logout',
       headers: {}
     };
 
-    axios.delete(options.url, {headers: options.headers})
+    axios.delete('/users/logout', {headers: options.headers})
     .then(response => {
       console.log(response);
       window.localStorage.removeItem('accessToken');
