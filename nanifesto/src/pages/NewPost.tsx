@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import PostedAlert from "../components/PostedAlert.tsx";
 import axios from 'axios';
 
+axios.defaults.baseURL = 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001';
+
 export default function NewPost({ adminStatus }) {
   const [posted, setPosted] = useState<boolean>(false);
   const [titleExists, setTitleExists] = useState<boolean>(true);
@@ -37,7 +39,7 @@ export default function NewPost({ adminStatus }) {
       }
     };
 
-    axios.post(process.env.DATA_URL + '/posts/save-new', {title: title, body: body}, {headers: options.headers})
+    axios.post('/posts/save-new', {title: title, body: body}, {headers: options.headers})
     .then(() => {
       setPosted(true);
       console.log('posted!');
