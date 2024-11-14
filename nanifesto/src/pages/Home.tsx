@@ -7,12 +7,12 @@ export default function Home({ adminStatus }) {
   return (
     <div
       className={
-        `flex w-screen h-screen bg-matcha-50 dark:bg-slate-900 place-content-center place-items-center`
+        `flex w-screen h-screen bg-matcha-50 dark:bg-matcha-800 place-content-center place-items-center`
       }
     >
       <div
         className={
-          `flex flex-col w-5/6 sm:w-2/4 sm:flex lg:w-4/6 xl:w-2/4 space-y-4 text-matcha-900`
+          `flex flex-col w-5/6 sm:w-2/4 sm:flex lg:w-4/6 xl:w-2/4 space-y-4 text-matcha-900 dark:text-matcha-50`
         }
       >
         <p className={`text-center text-4xl`}>

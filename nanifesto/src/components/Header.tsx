@@ -28,13 +28,13 @@ export default function Header({ loggedAs, setLoggedAs }) {
   return (
     <div
       className={
-        `fixed top-0 w-screen h-20 bg-honey-900 dark:bg-sapphire-900 border-matcha-300 dark:border-sapphire-500 border-solid border-b-4 font-mono text-2xl text-honey-100 p-4 items-center hidden sm:flex flex-row`
+        `fixed top-0 w-screen h-20 bg-honey-900 dark:bg-transparent border-matcha-500 dark:border-matcha-500 border-solid border-b-4 font-mono text-2xl text-honey-100 p-4 items-center hidden sm:flex flex-row`
       }
     >
       <a
         href={ path === '/' ? '/' : '/home' }
         className={
-          `transition text-matcha-300 dark:text-sapphire-500 hover:text-matcha-100 hover:dark:text-sapphire-300`
+          `transition text-matcha-300 dark:text-matcha-300 hover:text-matcha-100 hover:dark:text-matcha-100`
         }
       >
         nanifesto.
@@ -42,12 +42,12 @@ export default function Header({ loggedAs, setLoggedAs }) {
       { path === '/' ?
         null
         :
-        <span className={`flex place-content-end w-full text-matcha-300 dark:text-sapphire-500`}> {loggedAs} </span>
+        <span className={`flex place-content-end w-full text-matcha-300 dark:text-matcha-300`}> {loggedAs} </span>
       }
       { loggedAs && path !== '/' ?
         <button
           className={
-            `w-36 transition text-matcha-500 dark:text-sapphire-700 hover:text-matcha-100 hover:dark:text-sapphire-300`
+            `w-36 transition text-matcha-500 dark:text-matcha-500 hover:text-matcha-100 hover:dark:text-matcha-100`
           }
           onClick={handleLogout}
         >

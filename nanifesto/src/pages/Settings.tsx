@@ -5,9 +5,6 @@ import Credits from '../components/Credits.tsx';
 export default function Settings({ dark, setDark }) {
   const [creditsOpen, setCreditsOpen] = useState(false);
 
-  console.log('dark in settings', dark);
-  console.log('theme in settings', window.localStorage.getItem('theme'));
-
   const handleLightSwitch = () => {
     if (dark) {
       setDark(false);

@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import PostedAlert from "../components/PostedAlert.tsx";
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://ec2-13-57-35-52.us-west-1.compute.amazonaws.com:3001';
-
 export default function NewPost({ adminStatus }) {
   const [posted, setPosted] = useState<boolean>(false);
   const [titleExists, setTitleExists] = useState<boolean>(true);
@@ -53,7 +51,7 @@ export default function NewPost({ adminStatus }) {
     <>
     { !adminStatus ?
       <div
-        className={`flex w-screen h-screen bg-honey-50 place-items-center place-content-center text-jungle-500`}
+        className={`flex w-screen h-screen bg-honey-50 dark:bg-matcha-800 place-items-center place-content-center text-jungle-500`}
       >
         henlo unauthorized user !! get out of here freak !
       </div>
@@ -62,7 +60,7 @@ export default function NewPost({ adminStatus }) {
         <PostedAlert posted={posted} setPosted={setPosted} handleRouting={handleRouting} />
         <div
           className={
-            `flex w-screen h-screen bg-matcha-50 place-items-center place-content-center`
+            `flex w-screen h-screen bg-matcha-50 dark:bg-matcha-800 place-items-center place-content-center`
           }
         >
           <form
