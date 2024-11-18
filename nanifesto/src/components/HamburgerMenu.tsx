@@ -13,7 +13,7 @@ export default function HamburgerMenu({ adminStatus }) {
       <button
         onClick={handleHam}
         className={
-          `fixed top-2 sm:top-24 left-2 flex flex-col space-y-1 h-12 w-14 bg-matcha-300 dark:bg-matcha-300 rounded justify-center items-center
+          `fixed top-2 sm:top-24 left-4 flex flex-col space-y-1 h-12 w-14 bg-matcha-300 dark:bg-matcha-300 rounded justify-center items-center
           transition hover:bg-matcha-400 hover:dark:bg-matcha-100 z-40`
         }
       >

@@ -69,20 +69,20 @@ export default function NewPost({ adminStatus }) {
             }
             onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}
           >
-            <label className='font-mono text-matcha-500 text-2xl select-none'> title </label>
+            <label className='font-mono text-matcha-500 dark:text-matcha-300 text-2xl select-none'> title </label>
             <input
               type='text'
               className={
-                `text-matcha-900 bg-honey-200 rounded border-solid border-2 w-full sm:w-2/4 p-2 overflow-x-auto
+                `text-matcha-800 bg-honey-200 dark:bg-matcha-200 rounded dark:border-matcha-500 border-solid border-2 w-full sm:w-2/4 p-2 overflow-x-auto
                 ${ titleExists ? 'border-honey-800' : 'border-red-900' }`
               }
               onChange={(e) => { setTitle(e.target.value)} }
             >
             </input>
-            <label className='font-mono text-matcha-500 text-2xl select-none'> body </label>
+            <label className='font-mono text-matcha-500 dark:text-matcha-300 text-2xl select-none'> body </label>
             <textarea
               className={
-                `text-matcha-900 bg-honey-200 rounded border-solid border-2 w-full h-full p-2 overflow-y-auto resize-none
+                `text-matcha-800 bg-honey-200 dark:bg-matcha-200 rounded dark:border-matcha-500 border-solid border-2 w-full h-full p-2 overflow-y-auto resize-none
                 ${ bodyExists ? 'border-honey-800' : 'border-red-900' }`
               }
               onChange={(e) => { setBody(e.target.value)} }

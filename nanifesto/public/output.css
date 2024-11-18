@@ -585,6 +585,10 @@ video {
   top: 1.5rem;
 }
 
+.left-4 {
+  left: 1rem;
+}
+
 .z-30 {
   z-index: 30;
 }
@@ -1082,6 +1086,11 @@ video {
   color: rgb(241 245 249 / var(--tw-text-opacity));
 }
 
+.text-matcha-800 {
+  --tw-text-opacity: 1;
+  color: rgb(24 32 2 / var(--tw-text-opacity));
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -1301,6 +1310,10 @@ video {
   }
 }
 
+.dark\:border-none:where(.dark, .dark *) {
+  border-style: none;
+}
+
 .dark\:border-matcha-500:where(.dark, .dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(103 128 33 / var(--tw-border-opacity));
@@ -1324,6 +1337,11 @@ video {
 .dark\:border-matcha-200:where(.dark, .dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(198 223 142 / var(--tw-border-opacity));
+}
+
+.dark\:border-matcha-800:where(.dark, .dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(24 32 2 / var(--tw-border-opacity));
 }
 
 .dark\:bg-honey-900:where(.dark, .dark *) {
@@ -1420,6 +1438,16 @@ video {
   background-color: rgb(44 57 6 / var(--tw-bg-opacity));
 }
 
+.dark\:bg-honey-300:where(.dark, .dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 180 134 / var(--tw-bg-opacity));
+}
+
+.dark\:bg-honey-500:where(.dark, .dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(177 132 66 / var(--tw-bg-opacity));
+}
+
 .dark\:text-sapphire-200:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(149 196 246 / var(--tw-text-opacity));
@@ -1500,6 +1528,26 @@ video {
   color: rgb(11 14 1 / var(--tw-text-opacity));
 }
 
+.dark\:text-matcha-400:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(137 164 60 / var(--tw-text-opacity));
+}
+
+.dark\:text-matcha-600:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(71 91 15 / var(--tw-text-opacity));
+}
+
+.dark\:text-matcha-800:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(24 32 2 / var(--tw-text-opacity));
+}
+
+.dark\:text-matcha-700:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(44 57 6 / var(--tw-text-opacity));
+}
+
 .hover\:dark\:bg-sapphire-400:where(.dark, .dark *):hover {
   --tw-bg-opacity: 1;
   background-color: rgb(79 151 227 / var(--tw-bg-opacity));
@@ -1563,4 +1611,14 @@ video {
 .hover\:dark\:text-matcha-50:where(.dark, .dark *):hover {
   --tw-text-opacity: 1;
   color: rgb(250 255 241 / var(--tw-text-opacity));
+}
+
+.dark\:hover\:text-matcha-300:hover:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(165 193 94 / var(--tw-text-opacity));
+}
+
+.dark\:hover\:text-matcha-100:hover:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(225 242 190 / var(--tw-text-opacity));
 }
