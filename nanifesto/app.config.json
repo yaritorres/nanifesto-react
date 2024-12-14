@@ -2,7 +2,19 @@
   "apps" : [
     {
       "name"      : "nanifesto",
-      "script"    : "npm start static",
+      "script"    : "npm run static",
+      "interpreter": "none",
+      "args": ""
+    },
+    {
+      "name"      : "nanifesto",
+      "script"    : "npm run express",
+      "interpreter": "none",
+      "args": ""
+    },
+    {
+      "name"      : "nanifesto",
+      "script"    : "npm run auth",
       "interpreter": "none",
       "args": ""
     }
