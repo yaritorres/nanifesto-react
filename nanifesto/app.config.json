@@ -2,7 +2,7 @@
   "apps" : [
     {
       "name"      : "nanifesto",
-      "script"    : "npm run static",
+      "script"    : "sudo npm run static",
       "interpreter": "none",
       "args": ""
     },
