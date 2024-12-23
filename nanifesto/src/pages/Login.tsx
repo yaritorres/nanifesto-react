@@ -21,7 +21,6 @@ export default function Login() {
   const handleLogin = () => {
     axios.post('/users/login', {username: username, password: password}, {headers: {}})
     .then(response => {
-      console.log(response);
       console.log('Logged in!');
       window.localStorage.setItem('accessToken', response.data.accessToken);
       setIsLoggingIn(true);
@@ -35,7 +34,6 @@ export default function Login() {
   const handleGuestLogin = () => {
     axios.post('/users/login', {username: 'guest', password: 'guest'}, {headers: {}})
     .then(response => {
-      console.log(response);
       console.log('Logged in!');
       window.localStorage.setItem('accessToken', response.data.accessToken);
       setIsLoggingIn(true);

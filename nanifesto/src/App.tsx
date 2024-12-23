@@ -56,8 +56,6 @@ function App() {
   }, [location])
 
   const path =  new URL(window.location.href).pathname;
-  console.log(dark);
-  console.log(window.localStorage.getItem('theme'));
 
   return (
     <>

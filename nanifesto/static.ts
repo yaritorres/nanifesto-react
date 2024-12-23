@@ -10,5 +10,5 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-console.log('Listening on port 9000');
+console.log('Listening on port 80');
 app.listen(80);
