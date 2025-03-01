@@ -30,6 +30,13 @@ export default function Credits({ creditsOpen, setCreditsOpen }:{ creditsOpen:Bo
           >
             linkedin
           </a>
+          <a
+            href='yari-portfolio.vercel.app'
+            target='noreferrer'
+            className={`text-3xl hover:cursor-pointer transition hover:text-matcha-300`}
+          >
+            portfolio
+          </a>
         </div>
         <button
           onClick={() => { setCreditsOpen(false); }}
