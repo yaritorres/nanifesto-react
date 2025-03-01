@@ -13,7 +13,7 @@ import findUser from './hooks/findUser.ts';
 function App() {
   const [loggedAs, setLoggedAs] = useState<string>('');
   const [adminStatus, setAdminStatus] = useState<boolean>();
-  const [dark, setDark] = useState<boolean>(false);
+  const [dark, setDark] = useState<boolean>(true);
   const location = useLocation();
 
   // SETS CURRENT THEME (LIGHT OR DARK) ON PAGE USING LOCAL STORAGE,
